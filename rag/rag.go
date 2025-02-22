@@ -32,5 +32,9 @@ func InitLLM(llmType string, opts LLMOpts) LLM {
 		return NewOpenAiLLM(opts)
 	}
 
+	if llmType == "llama" {
+		return NewLlamaLLM(opts)
+	}
+
 	return nil
 }

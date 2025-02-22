@@ -133,7 +133,7 @@ func (c *Client) handleChat(msg Message) {
 
 	resp, err := c.converter.Convert(
 		c.dbConn,
-		"gemini",
+		"llama",
 		chatReq.Question,
 		c.dbSchema,
 	)

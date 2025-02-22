@@ -10,16 +10,16 @@ sqlc-docker:
 	docker run --rm -v $(current_dir):/src -w /src sqlc/sqlc generate
 
 createdb:
-	docker exec -it postgres12 createdb --username=root --owner=root dbchat
+	docker exec -it postgres12 createdb --username=user --owner=user dbchat
 
 dropdb:
 	docker exec -it postgres12 dropdb dbchat
 
 gooseup:
-	goose -dir sql/schemas postgres postgres://root:secret@localhost:5431/dbchat?sslmode=disable up
+	goose -dir sql/schemas postgres postgres://user:password@localhost:5432/dbchat?sslmode=disable up
 
 goosedown:
-	goose -dir sql/schemas postgres postgres://root:secret@localhost:5431/dbchat?sslmode=disable down
+	goose -dir sql/schemas postgres postgres://user:password@localhost:5432/dbchat?sslmode=disable down
 
 test:
 	go test -v -cover -short ./...
