@@ -20,7 +20,29 @@ A backend application that enables conversational database interactions, leverag
 
 - > We've got a total of 114 accounts opened so far.
 
-#
+#### API endpoints
+1. User Endpoints
+- POST /api/v1/user/signup - Create a new user 
+> Request body: createUserRequest (username, full_name, email, password)
+
+- POST /api/v1/user/login - Login a user
+> Request body: loginUserRequest (email, password)
+> Response: loginUserResponse (tokens and user profile)
+
+- PATCH /api/v1/user/update - Update user (authenticated)
+> Request body: updateUserRequest (email, username, full_name, password)
+
+- PATCH /api/v1/user/delete - Delete user (authenticated)
+
+2. Admin Endpoints
+- POST /api/v1/admin/signup - Create admin user
+- POST /api/v1/admin/login - Login admin user
+- PATCH /api/v1/admin/update - Update admin (admin authenticated)
+- PATCH /api/v1/admin/user/restrict/:userId - Restrict a user (admin authenticated)
+- PATCH /api/v1/admin/user/delete/:userId - Delete a user (admin authenticated)
+
+3. WebSocket Endpoints
+- GET /api/v1/chat - WebSocket connection for chat (authenticated)
 
 #### *SECURITY CONSIDERATIONS*
 
